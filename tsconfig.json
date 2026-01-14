@@ -1,0 +1,57 @@
+{
+  "compilerOptions": {
+    /* --- 编译目标与环境 --- */
+    // 编译成最新的 JS 版本 (ESNext)，保留最新的语法特性
+    "target": "esnext",
+    // 包含的类型定义库：
+    // DOM: 浏览器环境 (window, document 等)
+    // ESNext: 最新 JS 语法的类型定义 (如 Promise.allSettled 等)
+    "lib": ["DOM", "ESNext"],
+    // 允许在项目中导入和编译 .js 文件 (不仅仅是 .ts)
+    "allowJs": true,
+
+    /* --- 模块化设置 --- */
+    // 模块生成格式：CommonJS (Node.js 默认格式)。
+    // 注意：子包可能会覆盖此配置为 "esnext" 以支持 Tree Shaking。
+    "module": "commonjs",
+    // 模块解析策略：使用 Node.js 的查找规则 (查找 node_modules)
+    "moduleResolution": "node",
+    // 允许导入 JSON 文件 (import x from './data.json')
+    "resolveJsonModule": true,
+    // ✅ 开启 ESM 与 CommonJS 的互操作性
+    // 允许你用 `import React from 'react'` 而不是 `import * as React from 'react'`
+    "esModuleInterop": true,
+
+    /* --- React 支持 --- */
+    // 使用 React 17+ 的新 JSX 转换 (自动引入 _jsx，不再需要 import React)
+    "jsx": "react-jsx",
+
+    /* --- 类型检查严格度 (最重要) --- */
+    // ✅ 开启所有严格类型检查选项 (包含 noImplicitAny, strictNullChecks 等)
+    // 强烈建议在 Monorepo 中保持开启，保证代码质量
+    "strict": true,
+    // 忽略 node_modules 库里的类型检查错误
+    // 作用：显著加快编译速度，防止第三方库的类型错误导致你编译失败
+    "skipLibCheck": true,
+
+    /* --- 代码特性支持 --- */
+    // 开启装饰器支持 (如果你用 MobX, NestJS 或老式 Class 组件会用到)
+    "experimentalDecorators": true,
+    // 强制文件名大小写一致 (防止 Windows/Mac 大小写不敏感导致 Linux 构建失败)
+    "forceConsistentCasingInFileNames": true,
+
+    /* --- 输出设置 --- */
+    // 生成 .d.ts 类型声明文件 (供其他包引用时有类型提示)
+    "declaration": true,
+    // 🚫 根目录不生成输出文件
+    // 核心配置：因为这是“基座”配置，根目录通常只做类型检查，不产生 .js 文件
+    // 具体的构建输出由各子包 (packages/*) 自己的 tsconfig 处理
+    "noEmit": true
+  },
+
+  /* --- 辅助配置 --- */
+  // 给编辑器用的 JSON Schema，提供配置项的代码提示
+  "$schema": "https://json.schemastore.org/tsconfig",
+  // 在 IDE (如 VSCode) 中显示的配置名称，方便区分是哪个配置文件
+  "display": "Base"
+}
