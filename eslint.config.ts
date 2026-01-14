@@ -27,7 +27,8 @@ export default defineConfig([
             js.configs.recommended, // 基础 JS 规则
             tseslint.configs.recommended, // tseslint内置规则
             reactHooks.configs.flat.recommended, // 专门针对 React Hooks
-            pluginReact.configs.flat.recommended // 通用 React 规则
+            pluginReact.configs.flat.recommended, // 通用 React 规则
+            pluginReact.configs.flat["jsx-runtime"] // 针对新 JSX 转换的规则
         ],
 
         plugins: {
